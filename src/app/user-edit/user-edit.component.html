@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>{{this.Userlogin_details.UserName}}</h1>
+    <div class="d-flex justify-content-between">
+      <div *ngIf="edit;else elseblock">
+        <h5>Here are your Blogs !<span><svg xmlns="http://www.w3.org/2000/svg" (click)="closeCurrentTab()" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+        </svg></span></h5>
+
+      </div>
+      <ng-template #elseblock>
+        <h5>User Not Logged In</h5>
+
+      </ng-template>
+       
+        <button class="btn btn-outline-secondary" [routerLink]="['addposts']"  [disabled]="!edit">Post</button>
+
+    </div>
+    <div class="container">
+        <div class="row">
+          <ng-container *ngFor="let post of User_post">
+            <div class="col-md-3 "  *ngIf="post.Name === Userlogin_details.UserName">
+              <div class="card bg-secondary text-white mb-4">
+                <div class="card-header d-flex justify-content-between p-2">
+                  <h5>{{ post.title }}</h5>
+                  <h5>{{ post.Date }}</h5>
+                </div>
+                <div class="card-body">
+                  <p>{{ post.Body.length > 87 ? (post.Body | slice: 0:85) + '...' : post.Body }}</p>
+                  <span *ngIf="post.Body.length > 87" class="text-primary pointer">
+                    <p><a [routerLink]="['/readmore']" (click)="handleclick(post.id)">Read More</a></p>
+                  </span>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-info" [routerLink]="['edit']" (click)="handledit(post.id)" >Edit</button>
+                    <button class="btn btn-outline-info" (click)="handledel(post.id)">Delete</button>
+                </div>
+              </div>
+            </div>
+        </ng-container>
+          </div>
+        
+      </div>
+      
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="d-flex justify-content-center">login</h1>
+   <form [formGroup]="LoginFrom" (submit)="handlesubmit()">
+    <div class="form-group">
+        <label for="UserName">UserName</label>
+        <input type="text" class="form-control" id="UserName" formControlName="UserName" />
+        <span [ngStyle]="{'color':'red'}" *ngIf="!userName?.valid && (userName?.touched || userName?.dirty)">
+            <span *ngIf="userName?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            <span *ngIf="userName?.errors?.['minlength']">
+                <p>Minimum 8 charcters required</p>
+
+            </span>
+
+
+        </span>
+
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" formControlName="Password" />
+        <span [ngStyle]="{'color':'red'}" *ngIf="!password?.valid && (password?.touched || password?.dirty)">
+            <span *ngIf="password?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            <span *ngIf="password?.errors?.['minlength']">
+                <p>Minimum 8 charcters required</p>
+
+            </span>
+
+
+        </span>
+
+    </div>
+    <div class="d-flex justify-content-center m-4">
+        <button class="btn btn-outline-secondary " >Log In</button>
+    </div>
+
+   </form>
+</div>

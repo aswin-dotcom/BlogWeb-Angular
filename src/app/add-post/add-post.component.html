@@ -1,0 +1,66 @@
+<div class="container">
+   <form [formGroup]="addPostForm" (submit)="handlesubmit(addPostForm)" >
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" id="Name" class="form-control" formControlName="Name" />
+        <span [ngStyle]="{'color':'red'}" *ngIf="!Name?.valid && (Name?.touched||Name?.dirty)">
+          
+            <span *ngIf="Name?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+
+            <span *ngIf="Name?.errors?.['minlength']">
+                <p>Minimum 5 characters required</p>
+            </span>
+           
+
+        </span>
+      
+    </div>
+    <div class="form-group">
+        <label for="Date">Date</label>
+        <input type="text" id="Date" class="form-control" formControlName="Date" />
+        <span [ngStyle]="{'color':'red'}" *ngIf="!Date?.valid && (Date?.touched||Date?.dirty)">
+            <span *ngIf="Date?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+          
+            
+        </span>
+       
+    </div>
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" id="Title" class="form-control" formControlName="title" />
+        <span [ngStyle]="{'color':'red'}" *ngIf="!title?.valid && (title?.touched || title?.dirty)">
+            <span *ngIf="title?.errors?.['required']">
+                <p>required</p>
+            </span>
+            <span *ngIf="title?.errors?.['minlength']">
+                <p>Minimum 5 characters required</p>
+
+            </span>
+
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="Message">Message</label>
+        <textarea id="Message" name="Message" class="form-control " formControlName="Body" rows="10" cols="200" ></textarea>
+        <span [ngStyle]="{'color':'red'}" *ngIf="!Body?.valid && (Body?.touched || Body?.dirty)">
+        <span *ngIf="Body?.errors?.['required']">
+            <p>required</p>
+        </span>
+        <span *ngIf="Body?.errors?.['minlength']">
+            <p>Minimum 15 characters required</p>
+
+        </span>
+
+        </span>
+    </div>
+    <button class="m-2 btn btn-outline-secondary" [disabled]="!addPostForm.valid">Post</button>
+      
+
+   </form>
+</div>

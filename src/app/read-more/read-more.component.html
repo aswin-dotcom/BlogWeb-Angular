@@ -1,0 +1,26 @@
+<div class="container" >
+   
+        <div *ngFor="let post of posts">
+            <div *ngIf="post.id==id">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-title pt   -3 d-flex justify-content-around">
+                                <h1>{{post.Name}}</h1>
+                                <h1>{{post.Date}} </h1>
+                            </div>
+                            <div class="card-body">
+                                <h3>{{post.title}}</h3>
+                                <h5>{{post.Body}}</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      
+
+
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+   <form [formGroup]="editForm">
+    <div class="formGroup">
+        <label for="UserName" class="form-label">UserName</label>
+        <input type="text" id="UserName" formControlName="Name" name="Name" class="form-control" />
+        <span  [ngStyle]="{'color':'red'}" *ngIf="!userName?.valid && (userName?.touched || userName?.dirty)">
+            <span *ngIf="userName?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            <span *ngIf="userName?.errors?.['minlength']">
+                <p>Minimum 5 characters required</p>
+
+            </span>
+
+        </span>
+
+    </div>
+    <div class="formGroup">
+        <label for="Date" class="form-label">Date</label>
+        <input type="text" id="Date" formControlName="Date" name="Date  " class="form-control" />
+        <span  [ngStyle]="{'color':'red'}" *ngIf="!date?.valid && (date?.touched || date?.dirty)">
+            <span *ngIf="date?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            
+
+        </span>
+
+    </div>
+    <div class="formGroup">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" formControlName="title" name="title" class="form-control" />
+        <span  [ngStyle]="{'color':'red'}" *ngIf="!tit?.valid && (tit?.touched || tit?.dirty)">
+            <span *ngIf="tit?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            <span *ngIf="tit?.errors?.['minlength']">
+                <p>Minimum 5 characters required</p>
+
+            </span>
+
+        </span>
+
+
+    </div>
+  
+    <div class="formGroup">
+        <label for="Body" class="form-label">Body</label>
+        <textarea rows="10" cols="200" id="Body" formControlName="Body" name="Body" class="form-control" ></textarea>
+        <span  [ngStyle]="{'color':'red'}" *ngIf="!body?.valid && (body?.touched || body?.dirty)">
+            <span *ngIf="body?.errors?.['required']">
+                <p>required</p>
+
+            </span>
+            <span *ngIf="body?.errors?.['minlength']">
+                <p>Minimum 5 characters required</p>
+
+            </span>
+
+        </span>
+
+
+    </div>
+    <div class="d-flex justify-content-center m-3">
+        <button class="btn btn-outline-secondary" [disabled]="!editForm.valid" (click)="handlesave()" >Save</button>
+    </div>
+
+   </form>
+
+</div>
+

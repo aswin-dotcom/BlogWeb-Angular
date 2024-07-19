@@ -1,0 +1,80 @@
+<div class="container">
+    <!-- <div *ngIf="!UserLogin ;else elseblock"> -->
+        <h1 class="d-flex justify-content-center">Sign Up </h1>
+        <form  [formGroup]="accountcreation" (submit)="handlesubmit()">
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" id="Username" class="form-control" formControlName="UserName"/>
+                <span [ngStyle]="{'color':'red'}" *ngIf="!UserName?.valid && (UserName?.touched || UserName?.dirty)">
+                    <span *ngIf="UserName?.errors?.['required']">
+                        <p>required</p>
+    
+                    </span>
+                    <span *ngIf="UserName?.errors?.['minlength']">
+                        <p>Minimum 8 charcters required</p>
+    
+                    </span>
+    
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" formControlName="email"/>
+                <span [ngStyle]="{'color':'red'}" *ngIf="!email?.valid && (email?.touched || email?.dirty)">
+                    <span *ngIf="email?.errors?.['required']">
+                        <p>required</p>
+    
+                    </span>
+                    <span *ngIf="email?.errors?.['minlength']">
+                        <p>Minimum 8 charcters required</p>
+    
+                    </span>
+    
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" id="Password" class="form-control" formControlName="password"/>
+                <span [ngStyle]="{'color':'red'}" *ngIf="!password?.valid && (password?.touched || password?.dirty)">
+                    <span *ngIf="password?.errors?.['required']">
+                        <p>required</p>
+    
+                    </span>
+                    <span *ngIf="password?.errors?.['minlength']">
+                        <p>Minimum 8 charcters required</p>
+    
+                    </span>
+    
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="Cpassword">Confirm Password</label>
+                <input type="password" id="Cpassword" class="form-control" formControlName="confirmpassword"/>
+                <span [ngStyle]="{'color':'red'}" *ngIf="!confirmpassword?.valid && (confirmpassword?.touched || confirmpassword?.dirty)">
+                    <span *ngIf="confirmpassword?.errors?.['required']">
+                        <p>required</p>
+    
+                    </span>
+                    <span *ngIf="confirmpassword?.errors?.['minlength']">
+                        <p>Minimum 8 charcters required</p>
+    
+                    </span>
+    
+                </span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-secondary mt-4 "[disabled]="!accountcreation.valid" >Register</button>
+                <button class="btn btn-secondary mt-4" [routerLink]="['login']">Sign In -></button>
+    
+            </div>
+            
+    
+        </form>
+     
+    <!-- </div> -->
+    <!-- <ng-template #elseblock>
+        
+
+    </ng-template> -->
+  
+</div>
